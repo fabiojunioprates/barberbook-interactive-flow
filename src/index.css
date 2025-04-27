@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -96,6 +97,91 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-barber-dark text-white;
   }
+}
+
+.step-progress {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+  width: 100%;
+  z-index: 0;
+}
+
+.step-progress-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  z-index: 1;
+}
+
+.step-progress-item:not(:first-child)::before {
+  content: "";
+  position: absolute;
+  height: 2px;
+  width: 100%;
+  right: 50%;
+  top: 25px;
+  background: #4B5563;
+  z-index: -1;
+}
+
+.step-progress-item.active:not(:first-child)::before,
+.step-progress-item.complete:not(:first-child)::before {
+  background: #FFA500;
+}
+
+.step-indicator {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #4B5563;
+  color: #fff;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.step-progress-item.active .step-indicator,
+.step-progress-item.complete .step-indicator {
+  background: #FFA500;
+}
+
+.service-card {
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.service-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.service-card.selected {
+  border: 2px solid #FFA500;
+  box-shadow: 0 8px 20px rgba(255, 165, 0, 0.2);
+}
+
+.primary-button {
+  background: #FFA500;
+  color: #0F1217;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.primary-button:hover {
+  background: #FFB733;
+  transform: translateY(-1px);
+}
+
+.primary-button:disabled {
+  background: #6B7280;
+  cursor: not-allowed;
+  transform: none;
 }
